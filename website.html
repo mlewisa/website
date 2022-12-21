@@ -1,90 +1,63 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<style>
-			* {
-				background-color: #D3D3D3;
-				font-family: 'Roboto', sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			.tab {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				overflow: hidden;
-				border: 1px solid #ccc;
-				background-color: #f1f1f1;
-			}
+<head>
+  <title>Tabs</title>
+  <style>
+    body {
+      background-color: gray;
+      font-family: Roboto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body onload="openDefault()">
+  <div>
+    <button id="defaultOpen" class="tablink" onclick="openPage('PeopleILike', this, '#555', 'white')"><p>People I Like</p></button>
+    <button class="tablink" onclick="openPage('SoftwareILike', this, '#555', 'white')"><p>Software I Like</p></button>
+    <button class="tablink" onclick="openPage('Recipes', this, '#555', 'white')"><p>Recipes</p></button>
 
-			.tab li {
-				float: left;
-			}
+    <div id="PeopleILike" class="tabcontent">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat elit purus, a porta libero efficitur in. In hac habitasse platea dictumst.</p>
+    </div>
 
-			.tab li a {
-				display: inline-block;
-				color: black;
-				text-align: center;
-				padding: 14px 16px;
-				text-decoration: none;
-				transition: 0.3s;
-				font-size: 17px;
-			}
+    <div id="SoftwareILike" class="tabcontent">
+      <p style="text-align: left; padding-left: 750px;">
+		<a href="https://jdownloader.org/">JDownloader</a> - multipurpose downloading tool<br><br>
+		<a href="https://winaero.com/download-winaero-tweaker/">Winaero</a> - windows tweaks<br><br>
+		<a href="http://www.speedcrunch.org/">SpeedCrunch</a> - CLI style calculator with nice features<br><br>
+		<a href="https://calibre-ebook.com/">Calibre</a> - plex for ebooks and good for editing/managing/converting ebook files<br><br>
+		<a href="https://handbrake.fr/">HandBrake</a> - video conversion/encoding<br><br>
+		<a href="https://www.foobar2000.org/">foobar2000</a> - audio player but actually just important for audio file conversion<br><br>
+		<a href="https://www.openshot.org/">OpenShot</a> - video editor<br><br>
+		<a href="https://notepad-plus-plus.org/">Notepad++</a> - notepad++<br><br>
+		<a href="https://www.voidtools.com/">VoidTools</a> - really fast windows search but is always indexing and hogging some ram<br><br>
+		<a href="https://tachiyomi.org/">Tachiyomi</a> - manga reader/library that aggregates sources<br><br>
+	  </p>
+    </div>
 
-			.tab li a:hover {
-				background-color: #ddd;
-			}
+    <div id="Recipes" class="tabcontent">
+      <p>Donec vestibulum sapien in nunc lacinia mollis. Ut sed rhoncus tellus. Maecenas tincidunt elit velit, eget aliquam dui volutpat ut. Donec sit amet vehicula est. Curabitur a tellus vel ipsum dictum fringilla.</p>
+    </div>
 
-			.tab li.active a {
-				background-color: #ccc;
-				color: white;
-			}
-
-			.tabcontent {
-				display: none;
-				padding: 6px 12px;
-				border: 1px solid #ccc;
-				border-top: none;
-			}
-		</style>
-	</head>
-	<body>
-		<ul class="tab">
-			<li><a href="#" class="tablinks" onclick="openTab(event, 'PeopleILike')">People I Like</a></li>
-			<li><a href="#" class="tablinks" onclick="openTab(event, 'ArtILike')">Art I Like</a></li>
-			<li><a href="#" class="tablinks" onclick="openTab(event, 'Recipes')">Recipes</a></li>
-		</ul>
-
-		<div id="PeopleILike" class="tabcontent">
-			<h3>People I Like</h3>
-			<p>Content about people I like.</p>
-		</div>
-
-		<div id="ArtILike" class="tabcontent">
-			<h3>Art I Like</h3>
-			<p>Content about art I like.</p>
-		</div>
-
-		<div id="Recipes" class="tabcontent">
-			<h3>Recipes</h3>
-			<p>Content about recipes.</p>
-		</div>
-
-		<script>
-			function openTab(evt, tabName) {
-				var i, tabcontent, tablinks;
-				tabcontent = document.getElementsByClassName("tabcontent");
-				for (i = 0; i < tabcontent.length; i++) {
-					tabcontent[i].style.display = "none";
-				}
-				tablinks = document.getElementsByClassName("tablinks");
-				for (i = 0; i < tablinks.length; i++) {
-					tablinks[i].className = tablinks[i].className.replace(" active", "");
-				}
-				document.getElementById(tabName).style.display = "block";
-				evt.currentTarget.className += " active";
-			}
-		</script>
-	</body>
+    <script>
+	function openPage(pageName, elmnt, color, textColor) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+		  tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < tablinks.length; i++) {
+		  tablinks[i].style.backgroundColor = "";
+		  tablinks[i].style.color = "";
+		}
+		document.getElementById(pageName).style.display = "block";
+		elmnt.style.backgroundColor = color;
+		elmnt.style.color = textColor;
+	}
+	function openDefault() {
+		 document.getElementById("defaultOpen").click();
+	}
+	</script>
+  </div>
+</body>
 </html>
